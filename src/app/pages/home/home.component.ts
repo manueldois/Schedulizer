@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import '../../../assets/img/wallpaper1.jpg'
 
 @Component({
   templateUrl: './home.component.html',

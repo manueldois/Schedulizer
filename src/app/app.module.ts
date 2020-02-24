@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSliderModule } from '@angular/material/slider';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 import { HomePage } from './pages/home/home.component';
 import { SchedulesPage } from './pages/schedules/schedules.component';
 import { SchedulePage } from './pages/schedule/schedule.component';
@@ -21,7 +23,8 @@ import { SchedulePage } from './pages/schedule/schedule.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule
+    MatSliderModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
