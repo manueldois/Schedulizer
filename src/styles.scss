@@ -21,14 +21,24 @@ h1, h2, h3 {
 mat-toolbar {
   justify-content: space-between;
 
-  a#logo {
-    height: 60%;
-    > img {
-      height: 100%;
-    }
+  a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0;
   }
 
-  i#account_circle {
-    font-size: 2em;
+  i {
+    font-size: 1.6em !important;
+    margin-right: 10px;
+  }
+
+  .center {
+    flex: 1 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 }

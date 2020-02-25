@@ -1,0 +1,13 @@
+<div>
+    <button mat-icon-button (click)="onClickChevron('left')">
+        <i class="material-icons"> chevron_left </i>
+    </button>
+    <button mat-icon-button (click)="onClickChevron('right')">
+        <i class="material-icons"> chevron_right </i>
+    </button>
+    <mat-datepicker #picker></mat-datepicker>
+    <input matInput hidden [matDatepicker]="picker" [value]="current_date" (dateChange)="onDateChange($event)">
+    <button mat-button (click)="picker.open()">
+        {{date.format("dddd, D MMM")}}
+    </button>
+</div>

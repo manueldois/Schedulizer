@@ -1,0 +1,10 @@
+mat-toolbar {
+    > div.center {
+        > a#logo {
+            margin-right: 10px;
+            > img {
+                height: 60%;
+            }
+        }
+    }
+}
