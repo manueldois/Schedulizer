@@ -1,0 +1,27 @@
+main {
+  section#my-boards {
+    > div.content {
+      display: flex;
+      flex-wrap: wrap;
+
+      // div.invisible corrects flexbox grow on the last line
+      > app-board-card,
+      div.invisible,
+      button#add-board {
+        padding: 0;
+        margin: 10px 10px;
+        flex: 1 1 200px;
+      }
+
+      button#add-board {
+        font-size: large;
+        height: 221px;
+
+        i {
+          font-size: 2em;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
