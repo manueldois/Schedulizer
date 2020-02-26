@@ -16,6 +16,10 @@ main {
       padding: 10px 25px;
       margin: 5px 5px;
       flex: 0 0 auto;
+
+      &.btn-add {
+        font-size: small;
+      }
     }
   }
 
@@ -25,11 +29,15 @@ main {
 
     &[name="tasks"] {
       button {
-        font-size: normal;
-        padding: 5px 10px;
+        padding: 5px 20px;
         margin: 5px 5px;
-        flex: 1 1 auto;
         word-wrap: break-word;
+        flex: 0 0;
+        min-width: fit-content;
+
+        &.btn-add {
+          font-size: small;
+        }
       }
     }
   }
