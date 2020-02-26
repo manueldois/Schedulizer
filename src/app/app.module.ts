@@ -20,6 +20,7 @@ import { SchedulesPage } from './pages/schedules/schedules.component';
 import { SchedulePage } from './pages/schedule/schedule.component';
 import { BoardCardComponent } from './pages/schedules/board-card/board-card.component';
 import { DatePickerComponent } from './pages/schedule/date-picker/date-picker.component';
+import { ExpandingSectionComponent } from './pages/schedule/expanding-section/expanding-section.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { DatePickerComponent } from './pages/schedule/date-picker/date-picker.co
     SchedulePage,
     BoardCardComponent,
     DatePickerComponent,
+    ExpandingSectionComponent,
   ],
   imports: [
     BrowserModule,
