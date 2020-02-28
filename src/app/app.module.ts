@@ -13,14 +13,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter'
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { HomePage } from './pages/home/home.component';
 import { SchedulesPage } from './pages/schedules/schedules.component';
 import { SchedulePage } from './pages/schedule/schedule.component';
 import { BoardCardComponent } from './pages/schedules/board-card/board-card.component';
 import { DatePickerComponent } from './pages/schedule/date-picker/date-picker.component';
-import { ExpandingSectionComponent } from './pages/schedule/expanding-section/expanding-section.component';
+import { TimetableComponent } from './pages/schedule/timetable/timetable.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { ExpandingSectionComponent } from './pages/schedule/expanding-section/ex
     SchedulePage,
     BoardCardComponent,
     DatePickerComponent,
-    ExpandingSectionComponent,
+    TimetableComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +43,8 @@ import { ExpandingSectionComponent } from './pages/schedule/expanding-section/ex
     MatCardModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

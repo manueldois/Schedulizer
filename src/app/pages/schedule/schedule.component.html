@@ -13,8 +13,9 @@
 <main>
     <section name="areas">
         <span class="title">Areas</span>
-        <div class="content">
-            <button *ngFor="let area of areas" mat-raised-button [color]="area.id == area_active ? 'primary' : ''">
+        <ul class="content">
+            <button *ngFor="let area of areas" class="area-item" mat-raised-button
+                [color]="area.id == area_active ? 'primary' : ''">
                 {{area.name}} </button>
             <button mat-stroked-button class="btn-add">
                 <i class="material-icons md-18">
@@ -24,27 +25,15 @@
                     Add Area
                 </span>
             </button>
-        </div>
+        </ul>
     </section>
 
-    <app-expanding-section name="tasks">
+    <section name="tasks">
         <span class="title">Tasks</span>
-        <div class="content">
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
-            <button mat-flat-button [style.background-color]="'red'"> Task 1 </button>
+        <ul class="content">
+            <span *ngFor="let task of tasks" class="task-item draggable" (mousedown)="onDragStart($event.target)" [style.background-color]="'red'">
+                {{ task.name.short }}
+            </span>
 
             <button mat-stroked-button class="btn-add">
                 <i class="material-icons md-18">
@@ -54,7 +43,12 @@
                     Add Task
                 </span>
             </button>
-        </div>
-    </app-expanding-section>
+        </ul>
+    </section>
 
+    <app-timetable></app-timetable>
 </main>
+
+<div name="drop-task-cursor" #drop_task_cursor>
+    <hr>
+</div>

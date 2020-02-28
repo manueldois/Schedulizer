@@ -1,0 +1,22 @@
+<section name="timetable">
+    <div class="head">
+        <div class="row">
+            <span class="first-col">Volunteers</span>
+            <div class="second-col">
+                <div class="hours" *ngFor="let hour of hours">
+                    <span> {{hour}} </span>
+                    <hr> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="body">
+        <div class="row" *ngFor="let participant of participants">
+            <span class="first-col"> {{participant.name}} </span>
+            <div class="second-col">
+                <app-scheduled-task *ngFor="let scheduled_task of participant.scheduled_tasks" [scheduled_task_id]='scheduled_task.id'></app-scheduled-task>
+            </div>
+        </div>
+    </div>
+</section>

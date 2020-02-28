@@ -1,0 +1,84 @@
+section[name="timetable"] {
+  width: 100%;
+
+  .head,
+  .body {
+    width: 100%;
+
+    .row {
+      display: flex;
+
+      .first-col {
+        display: block;
+        flex: 0 0 auto;
+        width: 150px;
+        padding: 10px 15px;
+        color: white;
+      }
+
+      .second-col {
+        width: 100%;
+        padding: 10px 25px;
+      }
+    }
+  }
+
+  .head {
+    > .row {
+      > .first-col {
+        font-size: large;
+        background-color: purple;
+      }
+
+      > .second-col {
+        background-color: rgb(10, 6, 255);
+        flex: 1 1 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        > div.hours {
+          color: white;
+          position: relative;
+
+          > hr {
+            width: 1px;
+            height: 7px;
+            background-color: white;
+            border: none;
+            margin: 0;
+            transform: translate(0, 10px);
+          }
+
+          > span {
+              position: absolute;
+              top: -10px;
+              left: -10px;
+          }
+        }
+      }
+    }
+  }
+
+  .body {
+    max-height: 200px;
+    overflow: scroll;
+
+    > .row {
+      > .first-col {
+        font-size: large;
+        background-color: green;
+      }
+
+      &:nth-child(even) {
+        background-color: whitesmoke;
+        .first-col {
+          background-color: lighten(green, 10%);
+        }
+      }
+
+      > .second-col {
+      }
+    }
+  }
+}
