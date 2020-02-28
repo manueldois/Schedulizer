@@ -31,9 +31,7 @@
     <section name="tasks">
         <span class="title">Tasks</span>
         <ul class="content">
-            <span *ngFor="let task of tasks" class="task-item draggable" (mousedown)="onDragStart($event.target)" [style.background-color]="'red'">
-                {{ task.name.short }}
-            </span>
+            <app-task></app-task>
 
             <button mat-stroked-button class="btn-add">
                 <i class="material-icons md-18">
@@ -48,7 +46,3 @@
 
     <app-timetable></app-timetable>
 </main>
-
-<div name="drop-task-cursor" #drop_task_cursor>
-    <hr>
-</div>

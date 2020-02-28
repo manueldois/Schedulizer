@@ -14,6 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter'
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatBadgeModule } from '@angular/material/badge';
+
 
 import { HomePage } from './pages/home/home.component';
 import { SchedulesPage } from './pages/schedules/schedules.component';
@@ -21,6 +23,7 @@ import { SchedulePage } from './pages/schedule/schedule.component';
 import { BoardCardComponent } from './pages/schedules/board-card/board-card.component';
 import { DatePickerComponent } from './pages/schedule/date-picker/date-picker.component';
 import { TimetableComponent } from './pages/schedule/timetable/timetable.component';
+import { TaskComponent } from './pages/schedule/task/task.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { TimetableComponent } from './pages/schedule/timetable/timetable.compone
     BoardCardComponent,
     DatePickerComponent,
     TimetableComponent,
+    TaskComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,8 @@ import { TimetableComponent } from './pages/schedule/timetable/timetable.compone
     MatButtonModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    DragDropModule
+    DragDropModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

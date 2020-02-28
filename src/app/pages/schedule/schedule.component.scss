@@ -43,39 +43,20 @@ main {
     margin-top: 20px;
 
     .btn-add {
+      display: inline-block;
       height: $item-height;
       margin: 0 5px;
     }
 
-    span.task-item {
-      height: $item-height;
+    app-task {
       display: inline-block;
-      padding: 10px;
+      height: $item-height;
       margin: 0 5px;
-      touch-action: none;
-      user-select: none;
-      cursor: -webkit-grab;
     }
   }
 
   app-timetable {
     display: block;
     margin-top: 20px;
-  }
-
-}
-
-
-div[name="drop-task-cursor"]{
-  position: absolute;
-  visibility: hidden;
-  top: 0;
-  left: 0;
-
-  > hr {
-    width: 0;
-    height: 20px;
-    border: 1px solid red;
-    background: none;
   }
 }

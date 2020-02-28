@@ -1,21 +1,27 @@
 <section name="timetable">
     <div class="head">
         <div class="row">
-            <span class="first-col">Volunteers</span>
-            <div class="second-col">
+            <div>
+                 Volunteers
+            </div>
+            <div>
                 <div class="hours" *ngFor="let hour of hours">
                     <span> {{hour}} </span>
-                    <hr> 
+                    <hr>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="body">
-        <div class="row" *ngFor="let participant of participants">
-            <span class="first-col"> {{participant.name}} </span>
-            <div class="second-col">
-                <app-scheduled-task *ngFor="let scheduled_task of participant.scheduled_tasks" [scheduled_task_id]='scheduled_task.id'></app-scheduled-task>
+        <div class="row">
+            <div>
+                 John 
+            </div>
+            <div class="dropzone-task">
+                <div class="task" [ngStyle]="{'left.%': 10, 'width.%': '5','background-color': 'red'}">
+                    <span> Task A </span>
+                </div>
             </div>
         </div>
     </div>

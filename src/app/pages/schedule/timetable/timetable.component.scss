@@ -5,10 +5,10 @@ section[name="timetable"] {
   .body {
     width: 100%;
 
-    .row {
+    > .row {
       display: flex;
 
-      .first-col {
+      > div:nth-of-type(1) {
         display: block;
         flex: 0 0 auto;
         width: 150px;
@@ -16,21 +16,21 @@ section[name="timetable"] {
         color: white;
       }
 
-      .second-col {
+      > div:nth-of-type(2) {
         width: 100%;
-        padding: 10px 25px;
+        padding: 3px 25px;
       }
     }
   }
 
   .head {
     > .row {
-      > .first-col {
+      > div:nth-of-type(1) {
         font-size: large;
         background-color: purple;
       }
 
-      > .second-col {
+      > div:nth-of-type(2) {
         background-color: rgb(10, 6, 255);
         flex: 1 1 100%;
         display: flex;
@@ -51,9 +51,9 @@ section[name="timetable"] {
           }
 
           > span {
-              position: absolute;
-              top: -10px;
-              left: -10px;
+            position: absolute;
+            top: -10px;
+            left: -10px;
           }
         }
       }
@@ -65,9 +65,29 @@ section[name="timetable"] {
     overflow: scroll;
 
     > .row {
-      > .first-col {
+      > div:nth-of-type(1) {
         font-size: large;
         background-color: green;
+      }
+
+      > div:nth-of-type(2) {
+        position: relative;
+
+        > div.task {
+          position: absolute;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 4px;
+          overflow: hidden;
+
+          > span {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+          }
+        }
       }
 
       &:nth-child(even) {
@@ -75,9 +95,6 @@ section[name="timetable"] {
         .first-col {
           background-color: lighten(green, 10%);
         }
-      }
-
-      > .second-col {
       }
     }
   }
