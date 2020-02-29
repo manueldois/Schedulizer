@@ -31,7 +31,7 @@
     <section name="tasks">
         <span class="title">Tasks</span>
         <ul class="content">
-            <app-task></app-task>
+            <app-task *ngFor="let task of tasks"></app-task>
 
             <button mat-stroked-button class="btn-add">
                 <i class="material-icons md-18">
@@ -44,5 +44,11 @@
         </ul>
     </section>
 
-    <app-timetable></app-timetable>
+    <app-timetable #timetable></app-timetable>
+
+    <div class="cursor" [ngStyle]="{'left.px': cursor.x, 'top.px': cursor.y, 'opacity': cursor.opacity}">
+        <span>Ta</span>
+        <hr>
+    </div>
 </main>
+

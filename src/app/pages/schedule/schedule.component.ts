@@ -8,6 +8,11 @@ import interact from 'interactjs'
   styleUrls: ['./schedule.component.scss']
 })
 export class SchedulePage implements OnInit {
+  cursor = {
+    x: 100,
+    y: 0,
+    opacity: 1
+  }
 
   areas: Area[] = [
     { name: 'Area 1', id: '1' },
@@ -27,30 +32,20 @@ export class SchedulePage implements OnInit {
   constructor(private renderer: Renderer2, private el: ElementRef) { }
 
   ngOnInit() {
-    const position = { x: 0, y: 0 }
+    let snap_y = null
+    const cursor = this.cursor
 
-    interact('app-task > .draggable').draggable({
-      // modifiers: [
-      //   interact.modifiers.snap({
-      //     targets: [
-      //       function (
-      //         // the x and y page coordinates,
-      //         x, y,
-      //         // the current interaction
-      //         interaction,
-      //         // the offset information with relativePoint if set
-      //         { x: offsetX, y: offsetY, relativePoint, index: relativePointIndex },
-      //         // the index of this function in the options.targets array
-      //         index) {
-      //         return {
-      //           x: x,
-      //           y: 100,
-      //           range: 40,
-      //         }
-      //       }
-      //     ],
-      //   })
-      // ],
+    interact('app-task').draggable({
+      modifiers: [
+        interact.modifiers.snap({
+          targets: [
+            function (x, y) {
+              return { x: x, y: snap_y, range: 40 }
+            }
+          ],
+          offset: {x: 0, y: 20}
+        })
+      ],
       listeners: {
         start(event) {
           console.log(event.type, event.target)
@@ -58,22 +53,20 @@ export class SchedulePage implements OnInit {
 
         },
         move(event) {
-          position.x += event.dx
-          position.y += event.dy
-
-          event.target.style.transform =
-            `translate(${position.x}px, ${position.y}px)`
+          // Move cursor, not task element
+          cursor.x = event.page.x
+          cursor.y = event.page.y
+          cursor.opacity = 1
         },
         end(event) {
-          event.target.style.transform =
-            `translate(0,0)`
-          position.x = position.y = 0
-          event.target.style.opacity = 0
+          cursor.x = 0
+          cursor.y = 0
+          cursor.opacity = 0
         }
       }
     })
 
-    interact('.dropzone-task')
+    interact('app-timetable .tasks')
       .dropzone({
         ondrop: function (event) {
           alert(event.relatedTarget.id
@@ -81,7 +74,14 @@ export class SchedulePage implements OnInit {
             + event.target.id)
         },
         ondragenter: function (event) {
+          const el = event.target
+          const bounding_rect = el.getBoundingClientRect()
+          snap_y = bounding_rect.y
           console.log('ondragenter')
+        },
+        ondragleave: function (event) {
+          snap_y = null
+          console.log('ondragleave')
         }
       })
   }

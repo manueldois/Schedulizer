@@ -2,7 +2,7 @@
     <div class="head">
         <div class="row">
             <div>
-                 Volunteers
+                Volunteers
             </div>
             <div>
                 <div class="hours" *ngFor="let hour of hours">
@@ -16,9 +16,29 @@
     <div class="body">
         <div class="row">
             <div>
-                 John 
+                John
             </div>
-            <div class="dropzone-task">
+            <div class="tasks">
+                <div class="task" [ngStyle]="{'left.%': 10, 'width.%': '5','background-color': 'red'}">
+                    <span> Task A </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                John
+            </div>
+            <div class="tasks">
+                <div class="task" [ngStyle]="{'left.%': 10, 'width.%': '5','background-color': 'red'}">
+                    <span> Task A </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                John
+            </div>
+            <div class="tasks">
                 <div class="task" [ngStyle]="{'left.%': 10, 'width.%': '5','background-color': 'red'}">
                     <span> Task A </span>
                 </div>
