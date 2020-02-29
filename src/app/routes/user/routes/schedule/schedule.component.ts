@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Renderer2, ElementRef } from '@angular/core';
-import { Area, Task, Volunteer } from '../../types';
+import { Area, Task, Volunteer } from '../../../../types';
 import interact from 'interactjs'
 
 

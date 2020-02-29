@@ -4,3 +4,11 @@ main {
     background-position: center;
     background-size: cover;
 }
+
+a#logo {
+    height: 60%;
+
+    > img {
+        height: 100%;
+    }
+}
