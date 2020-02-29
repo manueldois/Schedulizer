@@ -1,0 +1,27 @@
+<mat-tab-group (selectedTabChange)="onAreaChange($event)">
+    <mat-tab *ngFor="let area of areas" [label]="area.name"></mat-tab>
+</mat-tab-group>
+
+<main>
+    <section name="tasks">
+        <small>Tasks</small>
+        <ul name="available-tasks">
+            <li *ngFor="let task of tasks" [attr.data-id]="'111taskid'" class="available-task drag-copy">
+                {{ task.name.long }} </li>
+        </ul>
+
+        <div class="delete-task-dropzone" [style.visibility]="delete_task_dropzone.visible ? 'visible' : 'hidden'" [class.hovering]="delete_task_dropzone.hovering">
+            <i class="material-icons md-48">
+                delete_outline
+            </i>
+        </div>
+    </section>
+
+    <app-timetable></app-timetable>
+</main>
+
+
+<div class="cursor" [ngStyle]="{'left.px': cursor.x, 'top.px': cursor.y, 'opacity': cursor.opacity}">
+    <span>Ta</span>
+    <hr>
+</div>

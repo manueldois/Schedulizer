@@ -1,0 +1,26 @@
+<div class="head">
+    <div class="row">
+        <div>
+            Volunteers
+        </div>
+        <div>
+            <div class="hours" *ngFor="let hour of hours">
+                <span> {{hour}} </span>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="body">
+    <div class="row">
+        <div>
+            John
+        </div>
+        <div class="tasks-zone" [attr.data-id]="'1234volunteer'" >
+            <button class="scheduled-task" [ngStyle]="{'left.%': 10, 'width.%': '5','background-color': 'red'}">
+                 Task A
+            </button>
+        </div>
+    </div>
+</div>

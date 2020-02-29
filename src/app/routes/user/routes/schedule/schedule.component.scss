@@ -1,12 +1,6 @@
-mat-toolbar {
-  > div.center {
-    > a#logo {
-      margin-right: 10px;
-      > img {
-        height: 60%;
-      }
-    }
-  }
+app-nav {
+  display: block;
+  width: 100%;
 }
 
 main {
@@ -58,41 +52,5 @@ main {
   app-timetable {
     display: block;
     margin-top: 20px;
-  }
-}
-
-div.cursor {
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 30px;
-  height: 30px;
-  touch-action: none;
-  user-select: none;
-  cursor: -webkit-grab;
-  transform: translate(-50%, -50%);
-
-  > span {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: red;
-    display: block;
-    border-radius: 100%;
-    font-size: small;
-    padding: 3px;
-  }
-
-  > hr {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 2px;
-    height: 25px;
-    background-color: green;
-    transform: translate(-50%, -50%);
-    border: none;
   }
 }

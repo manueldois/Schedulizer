@@ -7,11 +7,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter'
+import { MatTabsModule } from '@angular/material/tabs';
 
-import { DatePickerComponent } from './components/date-picker/date-picker.component'
-import { TimetableComponent } from './components/timetable/timetable.component'
-import { TasksComponent } from './components/tasks/tasks.component'
-import { TaskComponent } from './components/task/task.component'
+import { DatePickerComponent } from './components/nav/date-picker/date-picker.component'
+import { TimetableTabComponent } from './components/tabs/timetable/timetable.component'
+import { TasksTabComponent } from './components/tabs/tasks/tasks.component'
+import { VolunteersTabComponent } from './components/tabs/volunteers/volunteers.component';
+import { AreasTabComponent } from './components/tabs/areas/areas.component';
+import { NavComponent } from './components/nav/nav.component';
+import { TimetableComponent } from './components/tabs/timetable/timetable/timetable.component'
 
 const scheduleRoutes: Routes = [
   {
@@ -24,10 +28,13 @@ const scheduleRoutes: Routes = [
 @NgModule({
   declarations: [
     SchedulePage,
+    NavComponent,
     DatePickerComponent,
-    TasksComponent,
-    TaskComponent,
-    TimetableComponent
+    TasksTabComponent,
+    TimetableTabComponent,
+    VolunteersTabComponent,
+    AreasTabComponent,
+    TimetableComponent,
   ],
   imports: [
     RouterModule.forChild(scheduleRoutes),
@@ -35,7 +42,8 @@ const scheduleRoutes: Routes = [
     MatToolbarModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatTabsModule
   ]
 })
 export class ScheduleModule { }

@@ -1,17 +1,24 @@
-<mat-toolbar color="primary">
-    <app-date-picker></app-date-picker>
-    <div class="center">
-        <a href="/" id="logo">
-            <img src="../../../assets/logo/logo_single.svg" alt="" srcset="">
-        </a>
-        <h1>WS Schedule</h1>
-    </div>
-    <i class="material-icons"> send </i>
-    <i class="material-icons"> settings </i>
-    <i class="material-icons"> account_circle </i>
-</mat-toolbar>
+<app-nav></app-nav>
+
 <main>
-    <section name="areas">
+
+    <mat-tab-group>
+        <mat-tab label="Timetable">
+            <app-timetable-tab #timetable></app-timetable-tab>
+        </mat-tab>
+        <mat-tab label="Volunteers"> 
+            <app-volunteers-tab></app-volunteers-tab>
+        </mat-tab>
+        <mat-tab label="Areas"> 
+            <app-areas-tab></app-areas-tab>
+        </mat-tab>
+        <mat-tab label="Tasks">
+            <app-tasks-tab></app-tasks-tab>
+        </mat-tab>
+    </mat-tab-group>
+
+
+    <!-- <section name="areas">
         <span class="title">Areas</span>
         <ul class="content">
             <button *ngFor="let area of areas" class="area-item" mat-raised-button
@@ -42,13 +49,9 @@
                 </span>
             </button>
         </ul>
-    </section>
+    </section> -->
 
-    <app-timetable #timetable></app-timetable>
+    
 
-    <div class="cursor" [ngStyle]="{'left.px': cursor.x, 'top.px': cursor.y, 'opacity': cursor.opacity}">
-        <span>Ta</span>
-        <hr>
-    </div>
+
 </main>
-

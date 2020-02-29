@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Volunteer } from 'src/app/types';
-import moment, { Moment } from 'moment';
 
 @Component({
   selector: 'app-timetable',
@@ -22,13 +20,10 @@ export class TimetableComponent implements OnInit {
   get day_duration(): number {
     return this.time_end - this.time_start
   }
-
-
+  
   constructor() { }
 
   ngOnInit() {
-
-
   }
 
 }
