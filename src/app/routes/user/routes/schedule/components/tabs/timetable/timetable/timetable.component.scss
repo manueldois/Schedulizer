@@ -61,7 +61,7 @@ $scroll-bar-width: 5px;
 
 .body {
   max-height: 200px;
-  overflow: scroll;
+  overflow-y: scroll;
 
   > .row {
     > div:nth-of-type(1) {

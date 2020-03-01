@@ -8,9 +8,10 @@ import interact from 'interactjs';
   styleUrls: ['./delete-task-dropzone.component.scss']
 })
 export class DeleteTaskDropzoneComponent implements OnInit {
-  @ViewChild('nativeComponent', {static: true}) el: ElementRef
 
-  constructor(private dragdrop: DragdropService) { }
+  hover: boolean = false
+
+  constructor(private el: ElementRef, private dragdrop: DragdropService) { }
 
   ngOnInit() {
     this.initInteractivity()
@@ -20,14 +21,13 @@ export class DeleteTaskDropzoneComponent implements OnInit {
     // Drop task to trash
     interact(this.el.nativeElement).dropzone({
       ondragenter: event => {
-        this.dragdrop.setDeleteTaskDropzoneHover(true)
+        this.hover = true
       },
       ondragleave: event => {
-        this.dragdrop.setDeleteTaskDropzoneHover(false)
+        this.hover = false
       },
       ondrop: event => {
-        const task_id = event.relatedTarget.dataset.id
-        // this.onDeletedScheduledTask(task_id)
+        this.dragdrop.onDropToTrash(event)
       }
     })
   }

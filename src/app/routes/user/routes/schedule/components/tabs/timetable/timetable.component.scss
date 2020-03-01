@@ -1,5 +1,6 @@
 section[name="tasks"] {
   position: relative;
+  padding: 0 10px;
 
   ul[name="available-tasks"] {
     display: flex;
@@ -12,17 +13,24 @@ section[name="tasks"] {
       margin: 5px;
     }
   }
+
+  app-delete-task-dropzone {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: calc(100% - 20px);
+    top: 0;
+  }
 }
 
 main {
-  padding: 20px 5px;
-}
-
-app-delete-task-dropzone {
-
+  padding: 20px 0;
 }
 
 app-timetable {
   margin-top: 10px;
+  display: block;
 }
+
+
 

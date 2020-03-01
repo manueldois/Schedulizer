@@ -17,8 +17,8 @@
         <div>
             John
         </div>
-        <app-tasks-dropzone>
-            <app-scheduled-task [scheduledTask]="scheduled_task1"></app-scheduled-task>
+        <app-tasks-dropzone [attr.data-id]="'123john'">
+            <app-scheduled-task [scheduledTask]="scheduled_task1" [attr.data-id]="scheduled_task1.id"></app-scheduled-task>
         </app-tasks-dropzone>
     </div>
 </div>

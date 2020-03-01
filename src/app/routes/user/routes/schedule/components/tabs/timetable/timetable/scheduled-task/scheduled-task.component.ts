@@ -11,6 +11,13 @@ import { DragdropService } from '../../dragdrop.service';
 export class ScheduledTaskComponent implements OnInit {
   @Input('scheduledTask') scheduled_task: ScheduledTask
 
+  style = {
+    'left.%': 10,
+    'width.%': 10,
+    'background-color': 'red',
+    'opacity': 1
+  }
+
   constructor(private el: ElementRef, private dragdrop: DragdropService) { }
 
   ngOnInit() {
@@ -33,7 +40,7 @@ export class ScheduledTaskComponent implements OnInit {
         listeners: {
           start: event => {
             // hide task element
-            // this.renderer.setStyle(event.target, 'opacity', 0)
+            this.style.opacity = 0
 
             // set flag for template
             this.dragdrop.delete_task_dropzone.visible = true
@@ -44,12 +51,10 @@ export class ScheduledTaskComponent implements OnInit {
           },
           end: event => {
             // reveal task element
-            // this.renderer.setStyle(event.target, 'opacity', 1)
+            this.style.opacity = 1
 
             // Reset deleted tast dropzone
             this.dragdrop.delete_task_dropzone.visible = false
-            this.dragdrop.delete_task_dropzone.hover = false
-
             this.dragdrop.hideCursor()
           }
         }
@@ -60,7 +65,11 @@ export class ScheduledTaskComponent implements OnInit {
           right: '.resize.right'
         },
         onmove: event => {
-          console.log("on resize")
+          this.dragdrop.onResizeScheduledTask(event)
+        },
+        onend: event => {
+          this.dragdrop.onEndResizeScheduledTask(event)
+
         }
       })
   }

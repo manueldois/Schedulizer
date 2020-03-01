@@ -7,10 +7,10 @@
         <small>Tasks</small>
         <ul name="available-tasks">
             <li *ngFor="let task of tasks">
-                <app-available-task [task]="task"></app-available-task>
+                <app-available-task [task]="task" [attr.data-id]="task.id"></app-available-task>
             </li>
         </ul>
-        <app-delete-task-dropzone></app-delete-task-dropzone>
+        <app-delete-task-dropzone [style.display]="dragdrop.delete_task_dropzone.visible ? 'block' : 'none'"></app-delete-task-dropzone>
     </section>
 
     <app-timetable></app-timetable>
