@@ -6,22 +6,14 @@
     <section name="tasks">
         <small>Tasks</small>
         <ul name="available-tasks">
-            <li *ngFor="let task of tasks" [attr.data-id]="'111taskid'" class="available-task">
-                {{ task.name.long }} </li>
+            <li *ngFor="let task of tasks">
+                <app-available-task [task]="task"></app-available-task>
+            </li>
         </ul>
-
-        <div class="delete-task-dropzone" [style.visibility]="delete_task_dropzone.visible ? 'visible' : 'hidden'" [class.hovering]="delete_task_dropzone.hovering">
-            <i class="material-icons md-48">
-                delete_outline
-            </i>
-        </div>
+        <app-delete-task-dropzone></app-delete-task-dropzone>
     </section>
 
     <app-timetable></app-timetable>
 </main>
 
-
-<div class="cursor" [ngStyle]="{'left.px': cursor.x, 'top.px': cursor.y, 'opacity': cursor.opacity}">
-    <span>Ta</span>
-    <hr>
-</div>
+<app-drag-cursor></app-drag-cursor>

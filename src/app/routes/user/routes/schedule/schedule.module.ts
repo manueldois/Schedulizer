@@ -11,11 +11,16 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 import { DatePickerComponent } from './components/nav/date-picker/date-picker.component'
 import { TimetableTabComponent } from './components/tabs/timetable/timetable.component'
-import { TasksTabComponent } from './components/tabs/tasks/tasks.component'
 import { VolunteersTabComponent } from './components/tabs/volunteers/volunteers.component';
+import { TasksTabComponent } from './components/tabs/tasks/tasks.component'
 import { AreasTabComponent } from './components/tabs/areas/areas.component';
 import { NavComponent } from './components/nav/nav.component';
-import { TimetableComponent } from './components/tabs/timetable/timetable/timetable.component'
+import { TimetableComponent } from './components/tabs/timetable/timetable/timetable.component';
+import { AvailableTaskComponent } from './components/tabs/timetable/available-task/available-task.component';
+import { ScheduledTaskComponent } from './components/tabs/timetable/timetable/scheduled-task/scheduled-task.component';
+import { DragCursorComponent } from './components/tabs/timetable/drag-cursor/drag-cursor.component';
+import { DeleteTaskDropzoneComponent } from './components/tabs/timetable/delete-task-dropzone/delete-task-dropzone.component';
+import { TasksDropzoneComponent } from './components/tabs/timetable/timetable/tasks-dropzone/tasks-dropzone.component';
 
 const scheduleRoutes: Routes = [
   {
@@ -30,11 +35,16 @@ const scheduleRoutes: Routes = [
     SchedulePage,
     NavComponent,
     DatePickerComponent,
-    TasksTabComponent,
     TimetableTabComponent,
     VolunteersTabComponent,
     AreasTabComponent,
     TimetableComponent,
+    AvailableTaskComponent,
+    ScheduledTaskComponent,
+    TasksTabComponent,
+    DragCursorComponent,
+    DeleteTaskDropzoneComponent,
+    TasksDropzoneComponent,
   ],
   imports: [
     RouterModule.forChild(scheduleRoutes),

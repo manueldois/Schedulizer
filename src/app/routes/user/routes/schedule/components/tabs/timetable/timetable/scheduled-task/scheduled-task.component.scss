@@ -1,0 +1,49 @@
+button {
+  position: absolute;
+  height: 100%;
+  padding: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+
+  &:hover {
+    > div.resize {
+      visibility: visible;
+    }
+  }
+
+  > span {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    display: block;
+  }
+
+  > div.resize {
+    $picker-width: 6px;
+
+    visibility: hidden;
+    position: absolute;
+    width: $picker-width;
+    height: 100%;
+    top: 0;
+
+    &.left {
+      left: -3px;
+    }
+
+    &.right {
+      right: -3px;
+    }
+
+    & > div {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      background-color: rgb(0, 183, 255);
+      width: 100%;
+      height: $picker-width;
+    }
+  }
+}

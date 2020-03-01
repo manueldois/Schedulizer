@@ -17,16 +17,8 @@
         <div>
             John
         </div>
-        <div class="tasks-zone" [attr.data-id]="'1234volunteer'" >
-            <button class="scheduled-task" [ngStyle]="{'left.%': 10, 'width.%': '10','background-color': 'red'}">
-                 <span> Task A </span>
-                 <div class="resize left">
-                     <div></div>
-                 </div>
-                 <div class="resize right">
-                     <div></div>
-                 </div>
-            </button>
-        </div>
+        <app-tasks-dropzone>
+            <app-scheduled-task [scheduledTask]="scheduled_task1"></app-scheduled-task>
+        </app-tasks-dropzone>
     </div>
 </div>

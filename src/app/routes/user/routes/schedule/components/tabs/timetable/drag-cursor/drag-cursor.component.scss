@@ -1,0 +1,29 @@
+:host > div {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+
+  > span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    display: block;
+    border-radius: 100%;
+    font-size: small;
+    padding: 3px;
+  }
+
+  > hr {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 25px;
+    background-color: green;
+    transform: translate(-50%, -50%);
+    border: none;
+  }
+}
