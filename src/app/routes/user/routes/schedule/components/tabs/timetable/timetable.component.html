@@ -3,17 +3,17 @@
 </mat-tab-group>
 
 <main>
-    <section name="tasks">
+    <section name="tasks" class=""> 
         <small>Tasks</small>
         <ul name="available-tasks">
             <li *ngFor="let task of tasks">
-                <app-available-task [task]="task" [attr.data-id]="task.id"></app-available-task>
+                <app-available-task class="elevation-1 hover" [task]="task" [attr.data-id]="task.id"></app-available-task>
             </li>
         </ul>
-        <app-delete-task-dropzone [style.display]="dragdrop.delete_task_dropzone.visible ? 'block' : 'none'"></app-delete-task-dropzone>
+        <app-delete-task-dropzone class="elevation-1 hover" [style.display]="dragdrop.delete_task_dropzone.visible ? 'block' : 'none'"></app-delete-task-dropzone>
     </section>
 
-    <app-timetable></app-timetable>
+    <app-timetable class="elevation-1"></app-timetable>
 </main>
 
 <app-drag-cursor></app-drag-cursor>
