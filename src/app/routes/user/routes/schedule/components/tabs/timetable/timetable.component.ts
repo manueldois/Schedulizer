@@ -49,12 +49,11 @@ export class TimetableTabComponent implements OnInit {
   }
 
   initDragDrop() {
-    this.initDragDropAvailableTasks()
-    this.initDragDropScheduledTasks()
+    this.initInteractOnAvailableTasks()
+    this.initInteractOnScheduledTasks()
   }
 
-  initDragDropAvailableTasks() {
-    const cursor = this.cursor
+  initInteractOnAvailableTasks() {
     const available_task_selector = '.available-task'
     const timetable_tasks_zone_selector = 'app-timetable .tasks-zone'
 
@@ -63,8 +62,8 @@ export class TimetableTabComponent implements OnInit {
       modifiers: [
         interact.modifiers.snap({
           targets: [
-            function (x, y) {
-              return { x: x, y: cursor.snap_y, range: 40 }
+            (x, y) => {
+              return { x: x, y: this.cursor.snap_y, range: 40 }
             }
           ],
           offset: { x: 0, y: 20 }
@@ -73,18 +72,18 @@ export class TimetableTabComponent implements OnInit {
       listeners: {
         start: event => {
           // Reveal cursor
-          cursor.opacity = 1
+          this.cursor.opacity = 1
         },
         move: event => {
           // Move cursor, not task element
-          cursor.x = event.page.x
-          cursor.y = event.page.y
+          this.cursor.x = event.page.x
+          this.cursor.y = event.page.y
         },
         end: event => {
           // Reset cursor
-          cursor.x = 0
-          cursor.y = 0
-          cursor.opacity = 0
+          this.cursor.x = 0
+          this.cursor.y = 0
+          this.cursor.opacity = 0
         }
       }
     })
@@ -94,11 +93,10 @@ export class TimetableTabComponent implements OnInit {
       accept: available_task_selector,
       ondrop: event => {
         const page_x = event.dragEvent.page.x
-        const target_rect = (<HTMLElement>event.target).getBoundingClientRect()
+        const drop_relative_x = this.pageXToTargetRelativeX(page_x, event.target)
 
         const task_id = event.relatedTarget.dataset.id
         const volunteer_id = event.target.dataset.id
-        const drop_relative_x = (page_x - target_rect.left) / target_rect.width
 
         this.onNewScheduledTask(task_id, volunteer_id, drop_relative_x)
       },
@@ -106,22 +104,23 @@ export class TimetableTabComponent implements OnInit {
         // Listen to dragenter (before drop) and use for snapping
         const el = event.target
         const bounding_rect = el.getBoundingClientRect()
-        cursor.snap_y = bounding_rect.y
+        this.cursor.snap_y = bounding_rect.y
       },
       ondragleave: _ => {
-        cursor.snap_y = null
+        this.cursor.snap_y = null
       }
     })
   }
 
-  initDragDropScheduledTasks() {
+  initInteractOnScheduledTasks() {
     const scheduled_task_selector = '.scheduled-task'
     const timetable_tasks_zone_selector = 'app-timetable .tasks-zone'
     const delete_task_zone_selector = '.delete-task-dropzone'
 
 
-    // Drag with snapping
-    interact(scheduled_task_selector).draggable({
+    // Drag with snapping and resizing
+    interact(scheduled_task_selector)
+    .draggable({
       modifiers: [
         interact.modifiers.snap({
           targets: [
@@ -163,19 +162,29 @@ export class TimetableTabComponent implements OnInit {
         }
       }
     })
+    .resizable({
+      edges: {
+        left: '.resize.left',
+        right: '.resize.right'
+      },
+      onmove: event => {
+        console.log("on resize")
+      }
+    })
 
     // Drop into timetable
     interact(timetable_tasks_zone_selector).dropzone({
       accept: scheduled_task_selector,
       ondrop: event => {
-        console.log(event)
         const page_x = event.dragEvent.page.x
-        const target_rect = (<HTMLElement>event.target).getBoundingClientRect()
+        const drop_relative_x = this.pageXToTargetRelativeX(page_x, event.target)
 
         const task_id = event.relatedTarget.dataset.id
         const volunteer_id = event.target.dataset.id
-        const drop_relative_x = (page_x - target_rect.left) / target_rect.width
-        console.log("Task ID: " + task_id, " dropped for volunteer: " + volunteer_id, " at position: " + drop_relative_x)
+
+        console.log('drop into timetable')
+        
+        this.onMovedScheduledTask(task_id, volunteer_id, drop_relative_x)
       },
       ondragenter: event => {
         // Listen to dragenter (before drop) and use for snapping
@@ -190,7 +199,7 @@ export class TimetableTabComponent implements OnInit {
 
     // Drop into trash
     interact(delete_task_zone_selector).dropzone({
-      // accept: scheduled_task_selector,
+      accept: scheduled_task_selector,
       ondragenter: event => {
         console.log('on drag enter trash')
         this.delete_task_dropzone.hovering = true
@@ -203,6 +212,12 @@ export class TimetableTabComponent implements OnInit {
         this.onDeletedScheduledTask(task_id)
       }
     })
+
+  }
+
+  pageXToTargetRelativeX(page_x: number, target: HTMLElement){
+    const target_rect = target.getBoundingClientRect()
+    return (page_x - target_rect.left) / target_rect.width
   }
 
   onNewScheduledTask(task_id: string, volunteer_id: string, time_start: number) {
@@ -214,7 +229,7 @@ export class TimetableTabComponent implements OnInit {
   }
 
   onDeletedScheduledTask(scheduled_task_id: string) {
-
+    console.log("Deleted Task: ", scheduled_task_id)
   }
 
   onAreaChange(event) {
