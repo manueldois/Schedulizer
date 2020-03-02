@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 import { SchedulePage } from './schedule.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -8,6 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter'
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 import { DatePickerComponent } from './components/nav/date-picker/date-picker.component'
 import { TimetableTabComponent } from './components/tabs/timetable/timetable.component'
@@ -49,11 +55,16 @@ const scheduleRoutes: Routes = [
   imports: [
     RouterModule.forChild(scheduleRoutes),
     CommonModule,
+    FormsModule,
     MatToolbarModule,
     MatButtonModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class ScheduleModule { }

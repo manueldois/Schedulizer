@@ -5,6 +5,8 @@ import * as moment from 'moment';
 interface Volunteer {
     id: string,
     name?: string,
+    email?: string,
+    phone?: string,
     scheduled_tasks?: ScheduledTask[]
 }
 
