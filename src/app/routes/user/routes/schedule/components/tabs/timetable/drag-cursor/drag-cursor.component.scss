@@ -1,20 +1,10 @@
+@import 'src/vars.scss';
+
 :host > div {
   position: fixed;
   width: 30px;
-  height: 30px;
+  height: 1.5em;
   transform: translate(-50%, -50%);
-
-  > span {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: red;
-    display: block;
-    border-radius: 100%;
-    font-size: small;
-    padding: 3px;
-  }
 
   > hr {
     position: absolute;
@@ -22,8 +12,23 @@
     left: 50%;
     width: 2px;
     height: 25px;
-    background-color: green;
+    background-color: $accent;
     transform: translate(-50%, -50%);
     border: none;
+  }
+
+  > span {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $primary;
+    border: 2px solid $primary;
+    border-style: outset;
+    border-radius: 100%;
+    font-size: small;
+    padding: 1px;
+    color: white;
   }
 }

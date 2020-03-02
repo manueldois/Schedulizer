@@ -1,5 +1,5 @@
-<div class="cursor" [ngStyle]="{'left.px': dragdrop.cursor.x, 'top.px': dragdrop.cursor.y}">
-    <span>Ta</span>
-    <hr>
+<div class="cursor" [ngStyle]="{'left.px': x, 'top.px': y}">
+    <hr [style.background-color]="color">
+    <span> {{text}} </span>
 </div>
 <!--  -->

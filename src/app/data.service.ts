@@ -8,8 +8,8 @@ import moment from 'moment';
 export class DataService {
 
   DATA_tasks: Task[] = [
-    { id: '1', name: { short: 'TA', long: 'Task A' }, is_available_in_any_area: true },
-    { id: '2', name: { short: 'TB', long: 'Task B' }, is_available_in_any_area: true }
+    { id: '1', name: { short: 'TA', long: 'Task A' }, color: 'blue', is_available_in_any_area: true },
+    { id: '2', name: { short: 'TB', long: 'Task B' }, color: 'pink', is_available_in_any_area: true }
   ]
 
   DATA_scheduled_tasks: ScheduledTask[] = [

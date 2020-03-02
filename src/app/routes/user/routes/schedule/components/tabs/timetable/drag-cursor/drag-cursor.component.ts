@@ -7,6 +7,11 @@ import { DragdropService } from '../dragdrop.service';
   styleUrls: ['./drag-cursor.component.scss']
 })
 export class DragCursorComponent implements OnInit {
+  
+  x = 0
+  y = 0
+  color = 'red'
+  text = 'hi'
 
   constructor(private el: ElementRef, private dragdrop: DragdropService) { }
 

@@ -13,7 +13,9 @@
         <app-delete-task-dropzone class="elevation-1 hover" [style.display]="dragdrop.delete_task_dropzone.visible ? 'block' : 'none'"></app-delete-task-dropzone>
     </section>
 
-    <app-timetable class="elevation-1"></app-timetable>
+    <mat-card>
+        <app-timetable class="elevation-1"></app-timetable>
+    </mat-card>
 </main>
 
 <app-drag-cursor></app-drag-cursor>

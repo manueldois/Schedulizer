@@ -7,16 +7,11 @@ export class DragdropService {
 
   constructor() { }
 
-  selectors = {
-    available_task: 'app-available-task',
-    scheduled_task: 'app-scheduled-task',
-    delete_task_dropzone: 'app-delete-task-dropzone',
-    timetable_tasks_dropzone: '.tasks-dropzone'
-  }
-
   cursor = {
     x: -1000,
     y: 0,
+    color: 'blue',
+    text: ''
   }
 
   delete_task_dropzone = {
@@ -35,6 +30,10 @@ export class DragdropService {
 
   hideCursor() {
     this.moveCursor(-1000, 0)
+  }
+
+  styleCursor(text, color){
+    Object.assign(this.cursor, {text, color})
   }
 
   onDropToTimetable(event) {

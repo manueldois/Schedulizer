@@ -1,4 +1,4 @@
-@import "src/vars.scss";
+@import 'src/vars.scss';
 
 $scroll-bar-width: 5px;
 $hours-padding: 25px;
@@ -9,9 +9,8 @@ $hours-padding: 25px;
 
 header {
   display: grid;
-  background-color: $primary;
   grid-template-columns: var(--first-col-width) 1fr;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 2px solid $primary;
 
   > .src-box {
     padding: 10px 12px;
@@ -19,10 +18,7 @@ header {
     transform: translateY(3px);
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-
-    i {
-      color: gray;
-    }
+    color: $primary;
 
     input {
       border: none;
@@ -46,6 +42,7 @@ header {
     > div {
       position: relative;
       height: 100%;
+      color: $primary;
 
       > span {
         position: absolute;
@@ -57,7 +54,7 @@ header {
       > hr {
         width: 1px;
         height: 8px;
-        background-color: gray;
+        background-color: $primary;
         position: absolute;
         border: none;
         margin: 0;
@@ -88,103 +85,12 @@ ul.body {
       text-overflow: ellipsis;
       border-right: 1px solid lightgray;
     }
+
+    > app-tasks-dropzone {
+      position: relative;
+      display: block;
+      padding: 0 $hours-padding;
+    }
   }
 }
 
-// .head,
-// .body {
-//   width: 100%;
-
-//   > .row {
-//     display: flex;
-
-//     > div:nth-of-type(1) {
-//       display: block;
-//       flex: 0 0 auto;
-//       width: 150px;
-//       padding: 10px 15px;
-//       color: white;
-//     }
-
-//     > div:nth-of-type(2) {
-//       width: 100%;
-//     }
-//   }
-// }
-
-// .head {
-//   > .row {
-//     > div:nth-of-type(1) {
-//       font-size: large;
-//       background-color: purple;
-//     }
-
-//     > div:nth-of-type(2) {
-//       background-color: rgb(10, 6, 255);
-//       flex: 1 1 100%;
-//       display: flex;
-//       align-items: center;
-//       justify-content: space-between;
-//       padding: 3px (20px + $scroll-bar-width) 3px 20px;
-
-//       > div.hours {
-//         color: white;
-//         position: relative;
-
-//         > hr {
-//           width: 1px;
-//           height: 7px;
-//           background-color: white;
-//           border: none;
-//           margin: 0;
-//           transform: translate(0, 10px);
-//         }
-
-//         > span {
-//           position: absolute;
-//           top: -10px;
-//           left: -10px;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// .body {
-//   max-height: 200px;
-//   overflow-y: scroll;
-
-//   > .row {
-//     > div:nth-of-type(1) {
-//       display: flex;
-//       flex-direction: column;
-//       align-items: center;
-
-//       > span {
-//         width: 100%;
-//         display: block;
-//         font-size: medium;
-//         white-space: nowrap;
-//         overflow: hidden;
-//         text-overflow: ellipsis;
-//       }
-//       background-color: green;
-//     }
-
-//     > app-tasks-dropzone {
-//       position: relative;
-//       display: block;
-//       padding: 3px 0;
-//       margin: 0 20px;
-//       border: 2px solid;
-//       width: 100%;
-//     }
-
-//     &:nth-child(even) {
-//       background-color: whitesmoke;
-//       .first-col {
-//         background-color: lighten(green, 10%);
-//       }
-//     }
-//   }
-// }

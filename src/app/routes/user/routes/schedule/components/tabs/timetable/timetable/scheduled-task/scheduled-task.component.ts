@@ -14,7 +14,8 @@ export class ScheduledTaskComponent implements OnInit {
   style = {
     'left.%': 10,
     'width.%': 10,
-    'background-color': 'red',
+    'border-color': 'red',
+    'color': 'red',
     'opacity': 1
   }
 

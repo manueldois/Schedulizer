@@ -17,8 +17,8 @@
             {{volunteer.name}}
         </span>
         <app-tasks-dropzone [attr.data-id]="volunteer.id">
-            <!-- <app-scheduled-task *ngFor="let scheduled_task of volunteer.scheduled_tasks" -->
-                <!-- [scheduledTask]="scheduled_task" [attr.data-id]="scheduled_task.id"></app-scheduled-task> -->
+            <app-scheduled-task *ngFor="let scheduled_task of volunteer.scheduled_tasks"
+                [scheduledTask]="scheduled_task" [attr.data-id]="scheduled_task.id"></app-scheduled-task>
         </app-tasks-dropzone>
     </li>
 </ul>
