@@ -3,7 +3,7 @@
         <i class="material-icons">
             add
         </i>
-        Add Volunteer
+        Add Area
     </button>
 
     <ng-template [ngIf]="schedule_has_areas" [ngIfElse]="noAreas">
@@ -27,12 +27,24 @@
                         <mat-label>Name</mat-label>
                         <input matInput name="name" type="text" ngModel="{{area.name}}">
                     </mat-form-field>
+
+                    <div class="times">
+                        <mat-form-field>
+                            <mat-label>Time start</mat-label>
+                            <input matInput name="time_start" type="number" ngModel="{{area.time_start}}">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Time end</mat-label>
+                            <input matInput name="time_end" type="number" ngModel="{{area.time_end}}">
+                        </mat-form-field>
+                    </div>
+
                 </form>
 
                 <mat-action-row>
                     <button mat-button color="warn" (click)="onDeleteArea(area.id)">Delete</button>
-                    <button mat-button [disabled]="areaForm.pristine"
-                        (click)="areaForm.onSubmit()">Save</button>
+                    <button mat-button [disabled]="areaForm.pristine" (click)="areaForm.onSubmit()">Save</button>
                 </mat-action-row>
             </mat-expansion-panel>
         </mat-accordion>

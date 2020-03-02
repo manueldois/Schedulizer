@@ -1,18 +1,12 @@
+main {
+  max-width: 600px;
+  margin: auto;
+}
+
+
 mat-accordion {
-  > mat-expansion-panel {
-    form {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 20px;
-
-      @media screen and (max-width: 600px) {
-        grid-template-columns: 1fr;
-      }
-
-      > mat-form-field {
-        width: 100%;
-      }
-    }
+  mat-form-field {
+    width: 100%;
   }
 }
 
