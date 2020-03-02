@@ -1,0 +1,53 @@
+mat-accordion {
+  > mat-expansion-panel {
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+
+      @media screen and (max-width: 600px) {
+        grid-template-columns: 1fr;
+      }
+
+      > mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+}
+
+mat-card.src-box {
+  padding: 10px 12px;
+  display: flex;
+  transform: translateY(3px);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  i {
+    color: gray;
+  }
+
+  input {
+    border: none;
+    width: 100%;
+    margin-left: 10px;
+  }
+}
+
+.empty-list {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 20px 10px;
+  color: gray;
+}
+
+button.add {
+  margin-left: auto;
+  display: block;
+  width: 100%;
+
+  i {
+    color: green;
+  }
+}

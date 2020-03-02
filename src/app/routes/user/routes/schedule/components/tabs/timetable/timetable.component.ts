@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Volunteer, Area, Task } from 'src/app/types';
 import interact from 'interactjs'
 import { DragdropService } from './dragdrop.service';
+import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-timetable-tab',
@@ -10,17 +11,15 @@ import { DragdropService } from './dragdrop.service';
 })
 export class TimetableTabComponent implements OnInit {
 
-  areas: Area[] = [
-    { name: 'Area 1', id: '1' },
-  ]
-
+  areas: Area[]
   area_active = '2'
+  tasks: Task[]
 
-  tasks: Task[] = [
-    { name: { long: 'Task 1', short: 'T1' }, id: '1' },
-  ]
 
-  constructor(private dragdrop: DragdropService) { }
+  constructor(private dragdrop: DragdropService, private dataService: DataService) {
+    this.tasks = dataService.DATA_tasks
+    this.areas = dataService.DATA_areas
+  }
 
   ngOnInit() { }
 

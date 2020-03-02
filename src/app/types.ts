@@ -1,43 +1,40 @@
 import { Moment } from "moment";
-import * as moment from 'moment';
 
+type Id = string
+
+interface Area {
+    id: Id,
+    name?: string,
+    time_start?: number,
+    time_end?: number,
+}
+
+interface Task {
+    id: Id,
+    name?: {
+        short: string,
+        long: string
+    },
+    is_available_in_areas?: Area[],
+    is_available_in_any_area?: boolean
+} 
+
+interface ScheduledTask {
+    id: Id,
+    area?: Area,
+    time_start?: Moment,
+    time_end?: Moment,
+    task?: Task
+}
 
 interface Volunteer {
-    id: string,
+    id: Id,
     name?: string,
     email?: string,
     phone?: string,
     scheduled_tasks?: ScheduledTask[]
 }
 
-interface Area {
-    id: string,
-    name?: string,
-    tasks?: Task[],
-    timetable?: Timetable,
-}
-
-interface Task {
-    id: string,
-    name?: {
-        short: string,
-        long: string
-    }
-} 
-
-interface ScheduledTask {
-    id: string,
-    start?: Moment,
-    finish?: Moment,
-    task?: Task
-}
-
-interface Timetable {
-    id: string,
-    start?: number,
-    finish?: number,
-    participants?: Volunteer[]
-}
 
 
-export {Volunteer, Area, Task, ScheduledTask, Timetable}
+export {Volunteer, Area, Task, ScheduledTask}

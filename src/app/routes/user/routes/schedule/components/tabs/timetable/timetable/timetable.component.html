@@ -13,12 +13,12 @@
 </div>
 
 <div class="body">
-    <div class="row">
+    <div class="row" *ngFor="let volunteer of volunteers">
         <div>
-            John
+            {{volunteer.name}}
         </div>
-        <app-tasks-dropzone [attr.data-id]="'123john'">
-            <app-scheduled-task [scheduledTask]="scheduled_task1" [attr.data-id]="scheduled_task1.id"></app-scheduled-task>
+        <app-tasks-dropzone [attr.data-id]="volunteer.id">
+            <app-scheduled-task *ngFor="let scheduled_task of volunteer.scheduled_tasks" [scheduledTask]="scheduled_task" [attr.data-id]="scheduled_task.id"></app-scheduled-task>
         </app-tasks-dropzone>
     </div>
 </div>

@@ -6,7 +6,7 @@ import { DataService } from 'src/app/data.service'
 @Component({
   selector: 'app-volunteers-tab',
   templateUrl: './volunteers.component.html',
-  styleUrls: ['./volunteers.component.scss']
+  styleUrls: ['./volunteers.component.scss','../shared.scss']
 })
 export class VolunteersTabComponent implements OnInit {
 
@@ -38,7 +38,7 @@ export class VolunteersTabComponent implements OnInit {
     console.log("Delete volunteer: ", {id})
   }
 
-  onSearch(src: string){
+  onSearchVolunteer(src: string){
     console.log("Searching volunteers: ", src)
   }
 

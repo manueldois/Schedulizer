@@ -1,1 +1,46 @@
-<p>areas works!</p>
+<main>
+    <button mat-raised-button class="add" (click)="onAddArea()">
+        <i class="material-icons">
+            add
+        </i>
+        Add Volunteer
+    </button>
+
+    <ng-template [ngIf]="schedule_has_areas" [ngIfElse]="noAreas">
+        <mat-card class="src-box">
+            <i class="material-icons">
+                search
+            </i>
+            <input type="text" matInput placeholder="Search areas" #srcBox (input)="onSearchArea(srcBox.value)">
+        </mat-card>
+
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let area of areas">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ area.name }}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <form #areaForm="ngForm" (ngSubmit)="onEditArea(area.id, areaForm)">
+                    <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <input matInput name="name" type="text" ngModel="{{area.name}}">
+                    </mat-form-field>
+                </form>
+
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="onDeleteArea(area.id)">Delete</button>
+                    <button mat-button [disabled]="areaForm.pristine"
+                        (click)="areaForm.onSubmit()">Save</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </ng-template>
+
+    <ng-template #noArea>
+        <small class="empty-list">No areas in this schedule. Add an area to edit it's timetable</small>
+    </ng-template>
+
+</main>

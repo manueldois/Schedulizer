@@ -18,10 +18,13 @@ export class ScheduledTaskComponent implements OnInit {
     'opacity': 1
   }
 
-  constructor(private el: ElementRef, private dragdrop: DragdropService) { }
+  constructor(private el: ElementRef, private dragdrop: DragdropService) {
+  }
 
   ngOnInit() {
     this.initInteractivity()
+    console.log("Scheduled task: ", this.scheduled_task)
+
   }
 
   private initInteractivity() {

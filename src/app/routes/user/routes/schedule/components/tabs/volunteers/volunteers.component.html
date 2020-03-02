@@ -1,5 +1,5 @@
 <main>
-    <button mat-raised-button class="add-volunteer" (click)="onAddVolunteer()">
+    <button mat-raised-button class="add" (click)="onAddVolunteer()">
         <i class="material-icons">
             add
         </i>
@@ -11,7 +11,7 @@
             <i class="material-icons">
                 search
             </i>
-            <input type="text" matInput placeholder="Search volunteers" #srcBox (input)="onSearch(srcBox.value)">
+            <input type="text" matInput placeholder="Search volunteers" #srcBox (input)="onSearchVolunteer(srcBox.value)">
         </mat-card>
 
         <mat-accordion>
@@ -22,8 +22,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
-                <form #volunteerForm="ngForm" class="edit-volunteer"
-                    (ngSubmit)="onEditVolunteer(volunteer.id, volunteerForm)">
+                <form #volunteerForm="ngForm" (ngSubmit)="onEditVolunteer(volunteer.id, volunteerForm)">
                     <mat-form-field>
                         <mat-label>Name</mat-label>
                         <input matInput name="name" type="text" ngModel="{{volunteer.name}}">
