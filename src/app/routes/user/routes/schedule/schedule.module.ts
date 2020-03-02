@@ -14,6 +14,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 import { DatePickerComponent } from './components/nav/date-picker/date-picker.component'
 import { TimetableTabComponent } from './components/tabs/timetable/timetable.component'
@@ -64,7 +66,8 @@ const scheduleRoutes: Routes = [
     MatCardModule,
     MatExpansionModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTooltipModule
   ]
 })
 export class ScheduleModule { }

@@ -23,8 +23,6 @@ export class ScheduledTaskComponent implements OnInit {
 
   ngOnInit() {
     this.initInteractivity()
-    console.log("Scheduled task: ", this.scheduled_task)
-
   }
 
   private initInteractivity() {
