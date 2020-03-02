@@ -16,7 +16,8 @@
     ],
     "lib": [
       "es2018",
-      "dom"
+      "dom",
+      "esnext.asynciterable"
     ],
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true
@@ -25,5 +26,4 @@
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
   }
-
 }
