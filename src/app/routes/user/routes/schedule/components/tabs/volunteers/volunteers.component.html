@@ -1,62 +1,57 @@
 <main>
-    <mat-card>
-        <mat-card-content>
-            <button mat-flat-button class="add-volunteer" (click)="onAddVolunteer()">
-                <i class="material-icons">
-                    add
-                </i>
-                Add Volunteer
-            </button>
+    <button mat-raised-button class="add-volunteer" (click)="onAddVolunteer()">
+        <i class="material-icons">
+            add
+        </i>
+        Add Volunteer
+    </button>
 
-            <ng-template [ngIf]="schedule_has_volunteers" [ngIfElse]="noVolunteers">
-                <mat-card class="src-box">
-                    <i class="material-icons">
-                        search
-                    </i>
-                    <input type="text" matInput placeholder="Search volunteers" #srcBox
-                        (input)="onSearch(srcBox.value)">
-                </mat-card>
+    <ng-template [ngIf]="schedule_has_volunteers" [ngIfElse]="noVolunteers">
+        <mat-card class="src-box">
+            <i class="material-icons">
+                search
+            </i>
+            <input type="text" matInput placeholder="Search volunteers" #srcBox (input)="onSearch(srcBox.value)">
+        </mat-card>
 
-                <mat-accordion>
-                    <mat-expansion-panel *ngFor="let volunteer of volunteers">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                {{ volunteer.name }}
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let volunteer of volunteers">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ volunteer.name }}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
 
-                        <form #volunteerForm="ngForm" class="edit-volunteer"
-                            (ngSubmit)="onEditVolunteer(volunteer.id, volunteerForm)">
-                            <mat-form-field>
-                                <mat-label>Name</mat-label>
-                                <input matInput name="name" type="text" ngModel="{{volunteer.name}}">
-                            </mat-form-field>
+                <form #volunteerForm="ngForm" class="edit-volunteer"
+                    (ngSubmit)="onEditVolunteer(volunteer.id, volunteerForm)">
+                    <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <input matInput name="name" type="text" ngModel="{{volunteer.name}}">
+                    </mat-form-field>
 
-                            <mat-form-field>
-                                <mat-label>Email</mat-label>
-                                <input matInput name="email" type="email" ngModel="{{volunteer.email}}">
-                            </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput name="email" type="email" ngModel="{{volunteer.email}}">
+                    </mat-form-field>
 
-                            <mat-form-field>
-                                <mat-label>Phone</mat-label>
-                                <input matInput name="phone" type="tel" ngModel="{{volunteer.phone}}">
-                            </mat-form-field>
-                        </form>
+                    <mat-form-field>
+                        <mat-label>Phone</mat-label>
+                        <input matInput name="phone" type="tel" ngModel="{{volunteer.phone}}">
+                    </mat-form-field>
+                </form>
 
-                        <mat-action-row>
-                            <button mat-button color="warn" (click)="onDeleteVolunteer(volunteer.id)">Delete</button>
-                            <button mat-button [disabled]="volunteerForm.pristine"
-                                (click)="volunteerForm.onSubmit()">Save</button>
-                        </mat-action-row>
-                    </mat-expansion-panel>
-                </mat-accordion>
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="onDeleteVolunteer(volunteer.id)">Delete</button>
+                    <button mat-button [disabled]="volunteerForm.pristine"
+                        (click)="volunteerForm.onSubmit()">Save</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+        </mat-accordion>
 
-            </ng-template>
+    </ng-template>
 
-            <ng-template #noVolunteers>
-                <small class="no-volunteers">You have no volunteers yet</small>
-            </ng-template>
-        </mat-card-content>
-    </mat-card>
+    <ng-template #noVolunteers>
+        <small class="no-volunteers">You have no volunteers yet</small>
+    </ng-template>
 
 </main>
