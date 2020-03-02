@@ -1,0 +1,12 @@
+mat-expansion-panel {
+  form {
+    display: grid;
+    grid-template-columns: repeat(2, calc(50% - 10px));
+    grid-gap: 20px;
+
+
+    @media screen and (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

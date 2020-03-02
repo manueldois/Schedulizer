@@ -16,7 +16,9 @@ interface Task {
         long: string
     },
     is_available_in_areas?: Area[],
-    is_available_in_any_area?: boolean
+    is_available_in_any_area?: boolean,
+    color?: string,
+    min_duration?: number
 } 
 
 interface ScheduledTask {

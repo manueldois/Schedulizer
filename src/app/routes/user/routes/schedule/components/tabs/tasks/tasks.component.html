@@ -1,1 +1,62 @@
-<p>tasks works!</p>
+<main>
+    <button mat-raised-button class="add" (click)="onAddTask()">
+        <i class="material-icons">
+            add
+        </i>
+        Add Task
+    </button>
+
+    <ng-template [ngIf]="schedule_has_tasks" [ngIfElse]="noTasks">
+        <mat-card class="src-box">
+            <i class="material-icons">
+                search
+            </i>
+            <input type="text" matInput placeholder="Search tasks" #srcBox (input)="onSearchTask(srcBox.value)">
+        </mat-card>
+
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let task of tasks">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ task.name?.long }}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <form #taskForm="ngForm" (ngSubmit)="onEditTask(task.id, taskForm)">
+                    <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <input matInput #inName name="name" type="text" ngModel="{{task.name?.long}}"
+                        (input)="inNameShort.value = nameToShort(inName.value)">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Short name</mat-label>
+                        <input matInput #inNameShort name="short_name" type="text" ngModel="{{task.name?.short}}">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Color</mat-label>
+                        <input matInput name="color" type="color" ngModel="{{task.color}}">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Min duration</mat-label>
+                        <input matInput name="min_duration" type="number" ngModel="{{task.min_duration}}">
+                    </mat-form-field>
+
+                </form>
+
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="onDeleteTask(task.id)">Delete</button>
+                    <button mat-button [disabled]="taskForm.pristine" (click)="taskForm.onSubmit()">Save</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </ng-template>
+
+    <ng-template #noTasks>
+        <small class="empty-list">No tasks in this schedule</small>
+    </ng-template>
+
+</main>

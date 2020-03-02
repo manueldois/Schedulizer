@@ -11,7 +11,7 @@ import { DataService } from 'src/app/data.service';
 export class AreasTabComponent implements OnInit {
 
   areas: Area[]
-  schedule_has_areas = true
+  schedule_has_areas = false
 
   constructor(private dataService: DataService) {
     this.areas = dataService.DATA_areas
