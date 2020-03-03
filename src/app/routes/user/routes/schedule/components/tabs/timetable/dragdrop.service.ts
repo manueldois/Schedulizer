@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Cursor } from 'src/app/types';
 
 @Injectable({
   providedIn: 'root'
@@ -7,33 +9,45 @@ export class DragdropService {
 
   constructor() { }
 
-  cursor = {
+  cursor = new BehaviorSubject<Cursor>({
     x: -1000,
     y: 0,
-    color: 'blue',
+    color: '',
     text: ''
-  }
+  })
 
-  delete_task_dropzone = {
+  delete_task_dropzone = new BehaviorSubject({
     visible: false,
-  }
+  })
 
-  snap = {
+  snap =  new BehaviorSubject({
     x: 0,
     y: 0
-  }
+  })
 
-  moveCursor(pageX: number, pageY: number) {
-    this.cursor.x = pageX
-    this.cursor.y = pageY
+  moveCursor(clientX: number, clientY: number) {
+    let next = {... this.cursor.value}
+    next.x = clientX; next.y = clientY
+    this.cursor.next(next)
   }
 
   hideCursor() {
     this.moveCursor(-1000, 0)
   }
 
-  styleCursor(text, color){
-    Object.assign(this.cursor, {text, color})
+  styleCursor(text?: string, color?: string) {
+    let next = {... this.cursor.value}
+    if(text) next.text = text; 
+    if(color) next.color = color
+    this.cursor.next(next)
+  }
+
+  setSnapCoords(pageX: number, pageY: number) {
+    this.snap.next({x: pageX, y: pageY + 20})
+  }
+
+  setDeleteZoneVisibility(visible: boolean){
+    this.delete_task_dropzone.next({visible})
   }
 
   onDropToTimetable(event) {
@@ -60,7 +74,7 @@ export class DragdropService {
     }
   }
 
-  onDropToTrash(event){
+  onDropToTrash(event) {
     const source = <HTMLElement>event.relatedTarget
 
     const task_id = source.dataset.id
@@ -79,14 +93,14 @@ export class DragdropService {
     const target = <HTMLElement>event.target
     const task_id = target.dataset.id
 
-    console.log("onResizeScheduledTask: ", {event, task_id})
+    console.log("onResizeScheduledTask: ", { event, task_id })
   }
 
   onEndResizeScheduledTask(event) {
     const target = <HTMLElement>event.target
     const task_id = target.dataset.id
 
-    console.log("onEndResizeScheduledTask: ", {event, task_id})
+    console.log("onEndResizeScheduledTask: ", { event, task_id })
   }
 
   pageXToTargetRelativeX(page_x: number, target: HTMLElement) {

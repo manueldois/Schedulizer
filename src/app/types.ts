@@ -37,6 +37,12 @@ interface Volunteer {
     scheduled_tasks?: ScheduledTask[]
 }
 
+interface Cursor {
+    x: number,
+    y: number,
+    color: string,
+    text: string
+}
 
 
-export {Volunteer, Area, Task, ScheduledTask}
+export {Volunteer, Area, Task, ScheduledTask, Cursor}

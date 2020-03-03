@@ -33,10 +33,9 @@ export class ScheduledTaskComponent implements OnInit {
           interact.modifiers.snap({
             targets: [
               (x, y) => {
-                return { x: x, y: this.dragdrop.snap.y, range: 40 }
+                return { x: this.dragdrop.snap.value.x, y: this.dragdrop.snap.value.y, range: 40 }
               }
             ],
-            offset: { x: 0, y: 20 }
           })
         ],
         listeners: {
@@ -45,18 +44,22 @@ export class ScheduledTaskComponent implements OnInit {
             this.style.opacity = 0
 
             // set flag for template
-            this.dragdrop.delete_task_dropzone.visible = true
+            this.dragdrop.setDeleteZoneVisibility(true)
+            if(this.scheduled_task.task){
+              this.dragdrop.styleCursor(this.scheduled_task.task.name.short, this.scheduled_task.task.color)
+            }
+
           },
           move: event => {
             // Move cursor, not task element
-            this.dragdrop.moveCursor(event.page.x, event.page.y);
+            this.dragdrop.moveCursor(event.client.x, event.client.y);
           },
           end: event => {
             // reveal task element
             this.style.opacity = 1
 
             // Reset deleted tast dropzone
-            this.dragdrop.delete_task_dropzone.visible = false
+            this.dragdrop.setDeleteZoneVisibility(false)
             this.dragdrop.hideCursor()
           }
         }

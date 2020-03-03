@@ -24,10 +24,10 @@ export class TasksDropzoneComponent implements OnInit {
         ondragenter: event => {
           // Listen to dragenter (before drop) and use for snapping
           const bounding_rect =  event.target.getBoundingClientRect()
-          this.dragdrop.snap.y = bounding_rect.y
+          this.dragdrop.setSnapCoords(null, bounding_rect.y)
         },
         ondragleave: event => {
-          this.dragdrop.snap.y = null
+          this.dragdrop.setSnapCoords(null, null)
         }
       })
   }

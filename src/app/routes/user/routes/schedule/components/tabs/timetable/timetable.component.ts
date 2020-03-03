@@ -14,11 +14,13 @@ export class TimetableTabComponent implements OnInit {
   areas: Area[]
   area_active = '2'
   tasks: Task[]
+  delete_task_dropzone = {visible: false}
 
 
   constructor(private dragdrop: DragdropService, private dataService: DataService) {
     this.tasks = dataService.DATA_tasks
     this.areas = dataService.DATA_areas
+    dragdrop.delete_task_dropzone.subscribe(next => Object.assign(this.delete_task_dropzone, next))
   }
 
   ngOnInit() { }

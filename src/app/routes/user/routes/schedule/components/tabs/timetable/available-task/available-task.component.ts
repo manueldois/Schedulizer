@@ -23,10 +23,9 @@ export class AvailableTaskComponent implements OnInit {
         interact.modifiers.snap({
           targets: [
             (x, y) => {
-              return { x: x, y: this.dragdrop.snap.y, range: 40 };
+              return { x: this.dragdrop.snap.value.x, y: this.dragdrop.snap.value.y, range: 40 };
             }
           ],
-          offset: { x: 0, y: 20 }
         })
       ],
       listeners: {
@@ -34,7 +33,8 @@ export class AvailableTaskComponent implements OnInit {
         },
         move: event => {
           // Move cursor, not task element
-          this.dragdrop.moveCursor(event.page.x, event.page.y);
+          this.dragdrop.styleCursor(this.task.name.short, this.task.color)
+          this.dragdrop.moveCursor(event.client.x, event.client.y);
         },
         end: event => {
           // Hide cursor

@@ -13,9 +13,12 @@ export class DragCursorComponent implements OnInit {
   color = 'red'
   text = 'hi'
 
-  constructor(private el: ElementRef, private dragdrop: DragdropService) { }
+  constructor(private dragdrop: DragdropService) { }
 
   ngOnInit() {
+    this.dragdrop.cursor.subscribe(cursor => {
+      Object.assign(this, cursor)
+    })
   }
 
 }
