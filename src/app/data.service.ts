@@ -13,9 +13,9 @@ export class DataService {
   ]
 
   DATA_scheduled_tasks: ScheduledTask[] = [
-    { id: '11', task: { id: '1' }, area: { id: '1111' }, time_start: moment({ hour: 10 }), time_end: moment({ hour: 11 }) },
-    { id: '22', task: { id: '1' }, area: { id: '1111' }, time_start: moment({ hour: 11, minute: 30 }), time_end: moment({ hour: 11 }) },
-    { id: '33', task: { id: '2' }, area: { id: '1111' }, time_start: moment({ hour: 11, minute: 30 }), time_end: moment({ hour: 11 }) },
+    { id: '11', task: { id: '1' }, area: { id: '1111' }, start: moment({ hour: 10 }), end: moment({ hour: 11 }) },
+    { id: '22', task: { id: '1' }, area: { id: '1111' }, start: moment({ hour: 11, minute: 30 }), end: moment({ hour: 13 }) },
+    { id: '33', task: { id: '2' }, area: { id: '1111' }, start: moment({ hour: 15, minute: 30 }), end: moment({ hour: 18 }) },
   ]
 
   DATA_volunteers: Volunteer[] = [
@@ -25,7 +25,7 @@ export class DataService {
   ]
 
   DATA_areas: Area[] = [
-    { id: '1111', name: 'Area 1', time_start: 9, time_end: 17 }
+    { id: '1111', name: 'Area 1', start: 9, end: 17 }
   ]
 
   constructor() {}

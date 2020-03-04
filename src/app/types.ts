@@ -5,8 +5,8 @@ type Id = string
 interface Area {
     id: Id,
     name?: string,
-    time_start?: number,
-    time_end?: number,
+    start?: number,
+    end?: number,
 }
 
 interface Task {
@@ -24,8 +24,8 @@ interface Task {
 interface ScheduledTask {
     id: Id,
     area?: Area,
-    time_start?: Moment,
-    time_end?: Moment,
+    start?: Moment,
+    end?: Moment,
     task?: Task
 }
 

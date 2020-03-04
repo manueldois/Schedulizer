@@ -1,9 +1,9 @@
 <header>
-    <div class="src-box">
+    <div id="src-box">
         <i class="material-icons"> search </i>
         <input type="text" matInput placeholder="Volunteers" #srcBox (input)="onSearchVolunteer(srcBox.value)">
     </div>
-    <div class="hours">
+    <div id="hours">
         <div *ngFor="let hour of hours">
             <span> {{hour}} </span>
             <hr>
@@ -11,14 +11,18 @@
     </div>
 </header>
 
-<ul class="body">
+<ul id="body">
     <li *ngFor="let volunteer of volunteers">
         <span class="volunteer-name" matTooltip="{{volunteer.name}}">
             {{volunteer.name}}
         </span>
-        <app-tasks-dropzone [attr.data-id]="volunteer.id">
-            <app-scheduled-task *ngFor="let scheduled_task of volunteer.scheduled_tasks"
-                [scheduledTask]="scheduled_task" [attr.data-id]="scheduled_task.id"></app-scheduled-task>
-        </app-tasks-dropzone>
+        <div class="scheduled-tasks-container">
+            <ul class="scheduled-tasks" [attr.data-id]="volunteer.id">
+                <app-scheduled-task *ngFor="let scheduled_task of volunteer.scheduled_tasks"
+                    [scheduledTask]="scheduled_task" [attr.data-id]="scheduled_task.id"
+                    [ngStyle]="scheduled_task | scheduledTaskStyle: time_start:time_end">
+                </app-scheduled-task>
+            </ul>
+        </div>
     </li>
 </ul>

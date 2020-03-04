@@ -12,8 +12,6 @@ export class ScheduledTaskComponent implements OnInit {
   @Input('scheduledTask') scheduled_task: ScheduledTask
 
   style = {
-    'left.%': 10,
-    'width.%': 10,
     'border-color': 'red',
     'color': 'red',
     'opacity': 1
@@ -45,7 +43,7 @@ export class ScheduledTaskComponent implements OnInit {
 
             // set flag for template
             this.dragdrop.setDeleteZoneVisibility(true)
-            if(this.scheduled_task.task){
+            if(this.scheduled_task.task && this.scheduled_task.task.name){
               this.dragdrop.styleCursor(this.scheduled_task.task.name.short, this.scheduled_task.task.color)
             }
 

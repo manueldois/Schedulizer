@@ -1,4 +1,4 @@
-@import 'src/vars.scss';
+@import "src/vars.scss";
 
 $scroll-bar-width: 5px;
 $hours-padding: 25px;
@@ -12,7 +12,7 @@ header {
   grid-template-columns: var(--first-col-width) 1fr;
   border-bottom: 2px solid $primary;
 
-  > .src-box {
+  > #src-box {
     padding: 10px 12px;
     display: flex;
     transform: translateY(3px);
@@ -32,7 +32,7 @@ header {
     }
   }
 
-  > .hours {
+  > #hours {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,7 +64,7 @@ header {
   }
 }
 
-ul.body {
+ul#body {
   width: 100%;
   list-style: none;
   margin: 0;
@@ -78,7 +78,7 @@ ul.body {
     padding: 0;
 
     > .volunteer-name {
-      padding: 10px 12px;
+      padding: 15px 12px;
       font-size: small;
       white-space: nowrap;
       overflow: hidden;
@@ -86,11 +86,25 @@ ul.body {
       border-right: 1px solid lightgray;
     }
 
-    > app-tasks-dropzone {
-      position: relative;
-      display: block;
+    > div.scheduled-tasks-container {
       padding: 0 $hours-padding;
+
+      > ul.scheduled-tasks {
+        list-style: none;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+
+        > app-scheduled-task {
+          position: absolute;
+          display: block;
+          height: 2em;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
     }
   }
 }
-

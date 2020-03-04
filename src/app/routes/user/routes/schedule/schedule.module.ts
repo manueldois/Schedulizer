@@ -29,6 +29,7 @@ import { ScheduledTaskComponent } from './components/tabs/timetable/timetable/sc
 import { DragCursorComponent } from './components/tabs/timetable/drag-cursor/drag-cursor.component';
 import { DeleteTaskDropzoneComponent } from './components/tabs/timetable/delete-task-dropzone/delete-task-dropzone.component';
 import { TasksDropzoneComponent } from './components/tabs/timetable/timetable/tasks-dropzone/tasks-dropzone.component';
+import { ScheduledTaskStylePipe } from './components/tabs/timetable/timetable/scheduled-task-style.pipe';
 
 const scheduleRoutes: Routes = [
   {
@@ -53,6 +54,7 @@ const scheduleRoutes: Routes = [
     DragCursorComponent,
     DeleteTaskDropzoneComponent,
     TasksDropzoneComponent,
+    ScheduledTaskStylePipe,
   ],
   imports: [
     RouterModule.forChild(scheduleRoutes),

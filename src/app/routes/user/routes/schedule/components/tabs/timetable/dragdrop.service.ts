@@ -50,29 +50,7 @@ export class DragdropService {
     this.delete_task_dropzone.next({visible})
   }
 
-  onDropToTimetable(event) {
-    const source = <HTMLElement>event.relatedTarget
-    const target = <HTMLElement>event.target
-
-    const task_id = source.dataset.id
-    const volunteer_id = target.dataset.id
-
-    const page_x = event.dragEvent.page.x
-    const drop_relative_x = this.pageXToTargetRelativeX(page_x, event.target)
-
-    switch (source.tagName.toLowerCase()) {
-      case 'app-available-task':
-        console.log('Dropped available task to timetable: ', { task_id, volunteer_id, drop_relative_x })
-        break;
-
-      case 'app-scheduled-task':
-        console.log('Dropped scheduled task to timetable: ', { task_id, volunteer_id, drop_relative_x })
-        break;
-
-      default:
-        break;
-    }
-  }
+ 
 
   onDropToTrash(event) {
     const source = <HTMLElement>event.relatedTarget
