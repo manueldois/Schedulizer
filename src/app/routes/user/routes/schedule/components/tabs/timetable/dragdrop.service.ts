@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Cursor } from 'src/app/types';
+import { Rect, CoordsSet, Point } from '@interactjs/types/types';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +21,19 @@ export class DragdropService {
     visible: false,
   })
 
-  snap =  new BehaviorSubject({
+  snap = new BehaviorSubject<Point>({
     x: 0,
-    y: 0
+    y: 0,
+  })
+
+  restrict = new BehaviorSubject({
+    active: false,
+    rect: <Rect> {
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0
+    }
   })
 
   moveCursor(clientX: number, clientY: number) {
@@ -43,7 +54,15 @@ export class DragdropService {
   }
 
   setSnapCoords(pageX: number, pageY: number) {
-    this.snap.next({x: pageX, y: pageY + 20})
+    this.snap.next({x: pageX, y: pageY})
+  }
+
+  setRestriction(rect: Rect) {
+    this.restrict.next({active: true, rect})
+  }
+
+  releaseRestriction(){
+    this.restrict.next({active: false, rect: null})
   }
 
   setDeleteZoneVisibility(visible: boolean){
@@ -81,9 +100,11 @@ export class DragdropService {
     console.log("onEndResizeScheduledTask: ", { event, task_id })
   }
 
-  pageXToTargetRelativeX(page_x: number, target: HTMLElement) {
-    const target_rect = target.getBoundingClientRect()
-    return (page_x - target_rect.left) / target_rect.width
+  dropLeftRelativeToDropzoneLeft(drop_left: number, dropzone: HTMLElement) {
+    const dropzone_rect = dropzone.getBoundingClientRect()
+    const absolute_difference = drop_left - dropzone_rect.left
+    const relative_difference = absolute_difference / dropzone_rect.width
+    return relative_difference
   }
 
 

@@ -12,10 +12,14 @@ export class ScheduledTaskComponent implements OnInit {
   @Input('scheduledTask') scheduled_task: ScheduledTask
 
   style = {
-    'border-color': 'red',
-    'color': 'red',
-    'opacity': 1
+    borderColor: 'red',
+    color: 'red',
+    opacity: 1,
+    transform: 'translate(0,0)'
   }
+
+  dragging_position = { x: 0, y: 0 }
+  dragging_offset = { x: 0, y: 0 }
 
   constructor(private el: ElementRef, private dragdrop: DragdropService) {
   }
@@ -34,31 +38,40 @@ export class ScheduledTaskComponent implements OnInit {
                 return { x: this.dragdrop.snap.value.x, y: this.dragdrop.snap.value.y, range: 40 }
               }
             ],
+            offset: { x: 0, y: 22 }
+          }),
+          interact.modifiers.restrictRect({
+            restriction: (x, y, el) => {
+              if(this.dragdrop.restrict.value.active){
+                return this.dragdrop.restrict.value.rect
+              }else{
+                return null
+              }
+            }
           })
         ],
         listeners: {
           start: event => {
-            // hide task element
-            this.style.opacity = 0
-
-            // set flag for template
+            // Show delete zone
             this.dragdrop.setDeleteZoneVisibility(true)
-            if(this.scheduled_task.task && this.scheduled_task.task.name){
-              this.dragdrop.styleCursor(this.scheduled_task.task.name.short, this.scheduled_task.task.color)
+            this.dragging_offset = {
+              x: event.page.x - (event.rect.left + event.rect.width / 2),
+              y: event.page.y - (event.rect.top + event.rect.height / 2)
             }
-
           },
           move: event => {
-            // Move cursor, not task element
-            this.dragdrop.moveCursor(event.client.x, event.client.y);
+            // Move task element
+            this.dragging_position.x += event.dx
+            this.dragging_position.y += event.dy
+            this.style.transform = `translate(${this.dragging_position.x}px,${this.dragging_position.y + this.dragging_offset.y}px)`
           },
           end: event => {
-            // reveal task element
-            this.style.opacity = 1
+            // Reset element
+            this.dragging_position.x = this.dragging_position.y = 0
+            this.style.transform = `translate(0,0)`
 
-            // Reset deleted tast dropzone
+            // Hide delete zone
             this.dragdrop.setDeleteZoneVisibility(false)
-            this.dragdrop.hideCursor()
           }
         }
       })

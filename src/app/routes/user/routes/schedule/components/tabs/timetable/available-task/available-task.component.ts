@@ -26,6 +26,7 @@ export class AvailableTaskComponent implements OnInit {
               return { x: this.dragdrop.snap.value.x, y: this.dragdrop.snap.value.y, range: 40 };
             }
           ],
+          offset: { x: 0, y: 22 }
         })
       ],
       listeners: {
